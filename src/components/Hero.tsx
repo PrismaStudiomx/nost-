@@ -12,11 +12,12 @@ export default function Hero() {
 
       <div className="absolute inset-0">
 
-        <Image
+       <Image
   src="/hero.jpg"
-  alt="Hero"
+  alt="NOST Designer Streetwear"
   fill
   priority
+  sizes="100vw"
   className="object-cover"
 />
 

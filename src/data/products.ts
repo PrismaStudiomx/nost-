@@ -4,7 +4,7 @@ export const products = [
     slug: "oversized-hoodie",
     name: "Oversized Hoodie",
     price: 149,
-    image: "/products/hoodie.png",
+    image: "/products/hoodie.webp",
     description:
       "Premium heavyweight oversized hoodie crafted for modern streetwear.",
   },
@@ -13,7 +13,7 @@ export const products = [
     slug: "essential-tee",
     name: "Essential Tee",
     price: 79,
-    image: "/products/playera.png",
+    image: "/products/playera.webp",
     description:
       "Minimal designer tee built for everyday wear.",
   },
@@ -22,7 +22,7 @@ export const products = [
     slug: "cargo-pants",
     name: "Cargo Pants",
     price: 129,
-    image: "/products/cargo.png",
+    image: "/products/cargo.webp",
     description:
       "Technical cargo pants with a relaxed premium fit.",
   },
@@ -31,7 +31,7 @@ export const products = [
     slug: "designer-jacket",
     name: "Designer Jacket",
     price: 199,
-    image: "/products/chamarra.png",
+    image: "/products/chamarra.webp",
     description:
       "Luxury designer jacket inspired by modern street culture.",
   },
