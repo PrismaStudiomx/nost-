@@ -41,7 +41,7 @@ uppercase
 tracking-wider
 "
 >
-            Cart ({mounted ? totalItems : 0})
+            Cart • {mounted ? totalItems : 0}
           </a>
 
         </div>

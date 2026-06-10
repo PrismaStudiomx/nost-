@@ -9,7 +9,7 @@ import WhyItConverts from "@/components/WhyItConverts";
 export default function HomePage() {
   return (
     <>
-      <Navbar />
+      
 
       <Hero />
 
@@ -21,7 +21,7 @@ export default function HomePage() {
 
       <PerformanceBadge />
 
-      <Footer />
+      
     </>
   );
 }
