@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -66,27 +67,28 @@ export default function Hero() {
           They create them.
         </motion.p>
 
-        <motion.button
-          whileHover={{
-            scale: 1.04,
-          }}
-          whileTap={{
-            scale: 0.98,
-          }}
-          className="
-            mt-12
-            border
-            border-white
-            px-10
-            py-4
-            uppercase
-            tracking-widest
-            text-sm
-            transition
-          "
-        >
-          Shop Collection →
-        </motion.button>
+        <motion.div
+  whileHover={{ scale: 1.04 }}
+  whileTap={{ scale: 0.98 }}
+  className="mt-12"
+>
+  <Link
+    href="/shop"
+    className="
+      inline-block
+      border
+      border-white
+      px-10
+      py-4
+      uppercase
+      tracking-widest
+      text-sm
+      transition
+    "
+  >
+    Shop Collection →
+  </Link>
+</motion.div>
 
       </div>
 

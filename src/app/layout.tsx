@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import SchemaMarkup from "@/components/SchemaMarkup";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import AppShell from "@/components/layout/AppShell";
+import { Toaster } from "sonner";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -91,11 +91,11 @@ export default function RootLayout({
 >
   <SchemaMarkup />
 
-  <Navbar />
+  <AppShell>
+    {children}
+  </AppShell>
 
-  {children}
-
-  <Footer />
+  <Toaster richColors position="top-right" />
 </body>
     </html>
   );

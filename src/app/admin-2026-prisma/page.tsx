@@ -1,346 +1,387 @@
+const kpis = [
+  {
+    label: "Revenue",
+    value: "$48,920",
+    change: "+18%",
+  },
+  {
+    label: "Orders",
+    value: "387",
+    change: "+12%",
+  },
+  {
+    label: "Customers",
+    value: "1,284",
+    change: "+24%",
+  },
+  {
+    label: "Conversion Rate",
+    value: "4.7%",
+    change: "+0.8%",
+  },
+];
+
+const topProducts = [
+  {
+    name: "Oversized Hoodie",
+    revenue: "$12,400 Revenue",
+  },
+  {
+    name: "Designer Jacket",
+    revenue: "$9,800 Revenue",
+  },
+  {
+    name: "Cargo Pants",
+    revenue: "$7,200 Revenue",
+  },
+  {
+    name: "Essential Tee",
+    revenue: "$5,400 Revenue",
+  },
+];
+
+const orders = [
+  {
+    order: "#NOST-1024",
+    customer: "John Smith",
+    status: "Paid",
+    total: "$349",
+  },
+  {
+    order: "#NOST-1025",
+    customer: "Sarah Lee",
+    status: "Paid",
+    total: "$199",
+  },
+  {
+    order: "#NOST-1026",
+    customer: "Michael Brown",
+    status: "Processing",
+    total: "$278",
+  },
+];
+
+const activity = [
+  {
+    title: "New Order #1027",
+    time: "2 min ago",
+  },
+  {
+    title: "Payment Received",
+    time: "18 min ago",
+  },
+  {
+    title: "New Customer",
+    time: "42 min ago",
+  },
+  {
+    title: "Inventory Updated",
+    time: "1 hour ago",
+  },
+];
+
+const chartBars = [
+  "h-24",
+  "h-32",
+  "h-40",
+  "h-52",
+  "h-48",
+  "h-64",
+];
+
 export default function AdminPage() {
   return (
-   <main className="min-h-screen bg-neutral-50 p-8">
-{/* Dashboard Header */}
-      <div className="max-w-7xl mx-auto">
+    <main className="min-h-screen bg-neutral-50 text-neutral-950">
 
-        <div className="mb-12">
+      <div className="mx-auto max-w-7xl px-6 py-8">
 
-          <h1 className="text-5xl">
-            NOST Dashboard
-          </h1>
+        {/* Admin Header */}
 
-          <p className="mt-3 text-neutral-500">
-            Internal Analytics
-          </p>
-          
-          {/* KPI Cards */}
-          <div className="grid md:grid-cols-4 gap-6 mt-12">
+        <header className="flex flex-col gap-6 border-b border-black/10 pb-8 md:flex-row md:items-center md:justify-between">
 
-  <div className="bg-white p-6 border">
-    <p className="text-sm text-neutral-500">
-      Revenue
-    </p>
-
-    <h2 className="text-3xl mt-2">
-      $48,920
-    </h2>
-  </div>
-
-  <div className="bg-white p-6 border">
-    <p className="text-sm text-neutral-500">
-      Orders
-    </p>
-
-    <h2 className="text-3xl mt-2">
-      387
-    </h2>
-  </div>
-
-  <div className="bg-white p-6 border">
-    <p className="text-sm text-neutral-500">
-      Customers
-    </p>
-
-    <h2 className="text-3xl mt-2">
-      1,284
-    </h2>
-  </div>
-
-  <div className="bg-white p-6 border">
-    <p className="text-sm text-neutral-500">
-      Conversion Rate
-    </p>
-
-    <h2 className="text-3xl mt-2">
-      4.7%
-    </h2>
-  </div>
+          <div>
+            <p className="text-xs uppercase tracking-[0.4em] text-neutral-400">
+              NOST Admin
+            </p>
 
-</div>
-{/* grafica */}
-<div className="grid lg:grid-cols-3 gap-6 mt-12">
+            <h1 className="mt-3 text-4xl md:text-6xl">
+              Dashboard
+            </h1>
+          </div>
 
-  <div className="lg:col-span-2 bg-white border p-8">
+          <div className="flex items-center gap-3 text-sm text-neutral-600">
+            <span className="h-2 w-2 rounded-full bg-green-500" />
+            Live Store Analytics
+          </div>
 
-    <div className="flex justify-between items-center mb-8">
+        </header>
 
-      <h2 className="text-2xl">
-        Revenue Trend
-      </h2>
+        {/* KPI Cards */}
 
-      <span className="text-green-600">
-        +18%
-      </span>
+        <section className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
 
-    </div>
+          {kpis.map((item) => (
+            <div
+              key={item.label}
+              className="border border-black/10 bg-white p-6"
+            >
+              <p className="text-sm text-neutral-500">
+                {item.label}
+              </p>
 
-    <div className="h-72 flex items-end gap-4">
+              <div className="mt-4 flex items-end justify-between gap-4">
 
-      <div className="flex-1 bg-black h-24"></div>
-      <div className="flex-1 bg-black h-32"></div>
-      <div className="flex-1 bg-black h-40"></div>
-      <div className="flex-1 bg-black h-52"></div>
-      <div className="flex-1 bg-black h-48"></div>
-      <div className="flex-1 bg-black h-64"></div>
+                <h2 className="text-3xl">
+                  {item.value}
+                </h2>
 
-    </div>
+                <span className="text-sm text-green-400">
+                  {item.change}
+                </span>
 
-    <div className="flex justify-between mt-4 text-sm text-neutral-500">
+              </div>
+            </div>
+          ))}
 
-      <span>Jan</span>
-      <span>Feb</span>
-      <span>Mar</span>
-      <span>Apr</span>
-      <span>May</span>
-      <span>Jun</span>
+        </section>
 
-    </div>
+        {/* Chart + Top Products */}
 
-  </div>
+        <section className="mt-8 grid gap-6 lg:grid-cols-3">
 
-  <div className="bg-white border p-8">
+          <div className="border border-black/10 bg-white p-6 lg:col-span-2">
 
-    <h2 className="text-2xl mb-8">
-      Top Products
-    </h2>
+            <div className="mb-8 flex items-center justify-between">
 
-    <div className="space-y-6">
+              <div>
+                <h2 className="text-2xl">
+                  Revenue Trend
+                </h2>
 
-      <div>
-        <p>Oversized Hoodie</p>
-        <span className="text-neutral-500">
-          $12,400 Revenue
-        </span>
-      </div>
+                <p className="mt-1 text-sm text-neutral-400">
+                  Last 6 months performance
+                </p>
+              </div>
 
-      <div>
-        <p>Designer Jacket</p>
-        <span className="text-neutral-500">
-          $9,800 Revenue
-        </span>
-      </div>
+              <span className="text-green-400">
+                +18%
+              </span>
 
-      <div>
-        <p>Cargo Pants</p>
-        <span className="text-neutral-500">
-          $7,200 Revenue
-        </span>
-      </div>
+            </div>
 
-      <div>
-        <p>Essential Tee</p>
-        <span className="text-neutral-500">
-          $5,400 Revenue
-        </span>
-      </div>
+            <div className="flex h-72 items-end gap-3 md:gap-5">
 
-    </div>
+              {chartBars.map((height, index) => (
+                <div
+                  key={index}
+                  className={`flex-1 bg-black ${height}`}
+                />
+              ))}
 
-  </div>
+            </div>
 
-</div>
+            <div className="mt-4 flex justify-between text-xs text-neutral-400">
 
- {/* Recent Orders */}
-        </div>
-        <div className="bg-white border mt-12">
-            
+              <span>Jan</span>
+              <span>Feb</span>
+              <span>Mar</span>
+              <span>Apr</span>
+              <span>May</span>
+              <span>Jun</span>
 
-  <div className="p-6 border-b">
+            </div>
 
-    <h2 className="text-2xl">
-      Recent Orders
-    </h2>
+          </div>
 
-  </div>
+          <div className="border border-black/10 bg-white p-6">
 
-  <div className="overflow-x-auto">
+            <h2 className="text-2xl">
+              Top Products
+            </h2>
 
-    <table className="w-full">
+            <div className="mt-8 space-y-6">
 
-      <thead>
+              {topProducts.map((product) => (
+                <div
+                  key={product.name}
+                  className="border-b border-black/10 pb-5 last:border-0 last:pb-0"
+                >
+                  <p>{product.name}</p>
 
-        <tr className="border-b">
+                  <span className="mt-1 block text-sm text-neutral-400">
+                    {product.revenue}
+                  </span>
+                </div>
+              ))}
 
-          <th className="text-left p-4">
-            Order
-          </th>
+            </div>
 
-          <th className="text-left p-4">
-            Customer
-          </th>
+          </div>
 
-          <th className="text-left p-4">
-            Status
-          </th>
+        </section>
 
-          <th className="text-left p-4">
-            Total
-          </th>
+        {/* Orders + Activity */}
 
-        </tr>
+        <section className="mt-8 grid gap-6 lg:grid-cols-3">
 
-      </thead>
+          <div className="border border-black/10 bg-white lg:col-span-2 overflow-hidden">
 
-      <tbody>
+            <div className="border-b border-black/10 p-6">
 
-        <tr className="border-b">
+              <h2 className="text-2xl">
+                Recent Orders
+              </h2>
 
-          <td className="p-4">
-            #NOST-1024
-          </td>
+            </div>
 
-          <td className="p-4">
-            John Smith
-          </td>
+            <div className="w-full overflow-x-auto">
 
-          <td className="p-4">
-            Paid
-          </td>
+  <table className="min-w-[720px] w-full">
 
-          <td className="p-4">
-            $349
-          </td>
+                <thead>
 
-        </tr>
+                  <tr className="border-b border-black/10 text-left text-sm text-neutral-400">
 
-        <tr className="border-b">
+                    <th className="p-4">
+                      Order
+                    </th>
 
-          <td className="p-4">
-            #NOST-1025
-          </td>
+                    <th className="p-4">
+                      Customer
+                    </th>
 
-          <td className="p-4">
-            Sarah Lee
-          </td>
+                    <th className="p-4">
+                      Status
+                    </th>
 
-          <td className="p-4">
-            Paid
-          </td>
+                    <th className="p-4">
+                      Total
+                    </th>
 
-          <td className="p-4">
-            $199
-          </td>
+                  </tr>
 
-        </tr>
+                </thead>
 
-        <tr>
+                <tbody>
 
-          <td className="p-4">
-            #NOST-1026
-          </td>
+                  {orders.map((order) => (
+                    <tr
+                      key={order.order}
+                      className="border-b border-black/10 last:border-0"
+                    >
+                      <td className="p-4">
+                        {order.order}
+                      </td>
 
-          <td className="p-4">
-            Michael Brown
-          </td>
+                      <td className="p-4 text-neutral-700">
+                        {order.customer}
+                      </td>
 
-          <td className="p-4">
-            Processing
-          </td>
+                      <td className="p-4">
+                        <span
+                          className={`
+                            inline-flex
+                            rounded-full
+                            px-3
+                            py-1
+                            text-xs
+                            ${
+                              order.status === "Paid"
+                                ? "bg-green-500/10 text-green-400"
+                                : "bg-yellow-500/10 text-yellow-300"
+                            }
+                          `}
+                        >
+                          {order.status}
+                        </span>
+                      </td>
 
-          <td className="p-4">
-            $278
-          </td>
+                      <td className="p-4">
+                        {order.total}
+                      </td>
+                    </tr>
+                  ))}
 
-        </tr>
+                </tbody>
 
-      </tbody>
+              </table>
 
-    </table>
+            </div>
 
-  </div>
+          </div>
 
-</div>
-{/*activity feed*/}
-<div className="grid lg:grid-cols-3 gap-6 mt-12">
+          <div className="border border-black/10 bg-white p-6">
 
-  <div className="lg:col-span-2 bg-white border p-8">
+            <h2 className="text-2xl">
+              Activity
+            </h2>
 
-    <h2 className="text-2xl mb-8">
-      Store Insights
-    </h2>
+            <div className="mt-8 space-y-6">
 
-    <div className="grid md:grid-cols-3 gap-6">
+              {activity.map((item) => (
+                <div key={item.title}>
 
-      <div>
-        <p className="text-neutral-500">
-          Avg Order Value
-        </p>
+                  <p>{item.title}</p>
 
-        <h3 className="text-3xl mt-2">
-          $126
-        </h3>
-      </div>
+                  <span className="mt-1 block text-sm text-neutral-400">
+                    {item.time}
+                  </span>
 
-      <div>
-        <p className="text-neutral-500">
-          Returning Customers
-        </p>
+                </div>
+              ))}
 
-        <h3 className="text-3xl mt-2">
-          38%
-        </h3>
-      </div>
+            </div>
 
-      <div>
-        <p className="text-neutral-500">
-          Products Sold
-        </p>
+          </div>
 
-        <h3 className="text-3xl mt-2">
-          1,842
-        </h3>
-      </div>
+        </section>
 
-    </div>
+        {/* Store Insights */}
 
-  </div>
+        <section className="mt-8 border border-black/10 bg-white p-6">
 
-  <div className="bg-white border p-8">
+          <h2 className="text-2xl">
+            Store Insights
+          </h2>
 
-    <h2 className="text-2xl mb-8">
-      Activity
-    </h2>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
 
-    <div className="space-y-6">
+            <div>
+              <p className="text-neutral-400">
+                Avg Order Value
+              </p>
 
-      <div>
-        <p>New Order #1027</p>
-        <span className="text-neutral-500">
-          2 min ago
-        </span>
-      </div>
+              <h3 className="mt-2 text-3xl">
+                $126
+              </h3>
+            </div>
 
-      <div>
-        <p>Payment Received</p>
-        <span className="text-neutral-500">
-          18 min ago
-        </span>
-      </div>
+            <div>
+              <p className="text-neutral-400">
+                Returning Customers
+              </p>
 
-      <div>
-        <p>New Customer</p>
-        <span className="text-neutral-500">
-          42 min ago
-        </span>
-      </div>
+              <h3 className="mt-2 text-3xl">
+                38%
+              </h3>
+            </div>
 
-      <div>
-        <p>Inventory Updated</p>
-        <span className="text-neutral-500">
-          1 hour ago
-        </span>
-      </div>
+            <div>
+              <p className="text-neutral-400">
+                Products Sold
+              </p>
 
-    </div>
+              <h3 className="mt-2 text-3xl">
+                1,842
+              </h3>
+            </div>
 
-  </div>
+          </div>
 
-</div>
+        </section>
 
       </div>
 
     </main>
   );
 }
-

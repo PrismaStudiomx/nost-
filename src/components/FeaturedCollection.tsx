@@ -4,6 +4,8 @@ import Image from "next/image";
 import { products } from "@/data/products";
 import { useCartStore } from "@/store/cart-store";
 import Link from "next/link";
+import { toast } from "sonner";
+
 export default function FeaturedCollection() {
   const addItem = useCartStore(
   (state) => state.addItem
@@ -19,13 +21,13 @@ export default function FeaturedCollection() {
             New Season
           </p>
 
-          <h2 className="mt-4 text-4xl md:text-6xl">
+          <h2 className="mt-4 text-5xl md:text-6xl">
             Latest Drop
           </h2>
 
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12"> 
 
           {products.map((product) => (
             <Link
@@ -77,7 +79,10 @@ export default function FeaturedCollection() {
     price: product.price,
     image: product.image,
   });
+   toast.success("Added to cart");
+
 }}
+
     className="
       mt-4
       border
@@ -100,7 +105,45 @@ export default function FeaturedCollection() {
 
               </div>
 
-            </Link>
+{/* MOBILE INFO */}
+<div className="mt-5 md:hidden">
+
+  <h3 className="text-2xl">
+    {product.name}
+  </h3>
+
+  <p className="mt-2 text-neutral-500">
+    ${product.price}
+  </p>
+
+  <button
+    onClick={(e) => {
+      e.preventDefault();
+
+      addItem({
+        id: product.id,
+        name: product.name,
+        price: product.price,
+        image: product.image,
+      });
+      toast.success("Added to cart");
+    }}
+    className="
+      mt-4
+      border
+      px-5
+      py-3
+      text-sm
+      uppercase
+      tracking-widest
+    "
+  >
+    Add To Cart
+  </button>
+
+</div>
+
+</Link>
           ))}
 
         </div>

@@ -2,6 +2,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import { products } from "@/data/products";
 import type { Metadata } from "next";
+import AddToCartButton from "@/components/AddToCartButton";
 
 type Props = {
   params: Promise<{
@@ -85,19 +86,12 @@ export default async function ProductPage({
               ${product.price}
             </div>
 
-            <button
-              className="
-                mt-10
-                bg-black
-                text-white
-                px-8
-                py-4
-                uppercase
-                tracking-widest
-              "
-            >
-              Add To Cart
-            </button>
+            <AddToCartButton
+  id={product.id}
+  name={product.name}
+  price={product.price}
+  image={product.image}
+/>
 
           </div>
 
