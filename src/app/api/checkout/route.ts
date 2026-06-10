@@ -7,29 +7,31 @@ export async function POST(req: Request) {
 
     const items = body.items;
 
-    const session = await stripe.checkout.sessions.create({
-      mode: "payment",
+    const origin =
+  req.headers.get("origin") ||
+  "http://localhost:3000";
 
-      line_items: items.map((item: any) => ({
-        quantity: item.quantity,
+const session = await stripe.checkout.sessions.create({
+  mode: "payment",
 
-        price_data: {
-          currency: "usd",
+  line_items: items.map((item: any) => ({
+    quantity: item.quantity,
 
-          product_data: {
-            name: item.name,
-            images: [],
-          },
+    price_data: {
+      currency: "usd",
 
-          unit_amount: item.price * 100,
-        },
-      })),
-success_url:
-  "http://localhost:3000/success",
+      product_data: {
+        name: item.name,
+      },
 
-cancel_url:
-  "http://localhost:3000/cancel",
-    });
+      unit_amount: item.price * 100,
+    },
+  })),
+
+  success_url: `${origin}/success`,
+
+  cancel_url: `${origin}/cancel`,
+});
 
     return NextResponse.json({
       url: session.url,
